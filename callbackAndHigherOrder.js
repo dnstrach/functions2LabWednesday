@@ -7,17 +7,18 @@
 
 // CODE HERE
 
-const multiply = (num1, num2, cb) => cb(num1 * num2)
+const multiply = (num1, num2, cb) => cb(num1 * num2
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-multiply(4, 3, answer => {
+(multiply(4, 3, answer => {
    console.log('The answer is ' + answer) //should console.log 12
  })
 
+ //syntax error missing ) after argument list: function is not complete
 
 
 ////////// PROBLEMS 2 - 6 //////////
@@ -25,7 +26,7 @@ multiply(4, 3, answer => {
 // The names array will be used in problems 2 - 6.
 
 // Do not edit the code below.
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
+// var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 // Do not edit the code above.
 
 
@@ -38,18 +39,21 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-const first = (arr, cb) => cb(arr[0])
+// const first = (arr, cb) => cb(arr[0])
+//const first = (arr, cb) => cb(arr[0])
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
- first(names, firstName => {
-   console.log('The first name in names is ' + firstName)
- })
+  first(names, firstName => {
+    console.log('The first name in names is ' + firstName)
+  })
 
-
+//NOTE
+//names = array
+//firstName = cb
 
 ////////// PROBLEM 3 //////////
 
@@ -59,16 +63,18 @@ const first = (arr, cb) => cb(arr[0])
 */
 
 // CODE HERE
+// const last = (arr, cb) => cb(arr[0])
 const last = (arr, cb) => cb(arr[0])
+
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
- last(names, lastName => {
-   console.log('The last name in names is ' + lastName)
- })
+  last(names, lastName => {
+    console.log('The last name in names is ' + lastName)
+  })
 
 
 
@@ -81,21 +87,31 @@ const last = (arr, cb) => cb(arr[0])
   If the name does not exist, invoke the callback with false as the argument.
 */
 
+//NOTE
+// not written the same as solution
+
 // CODE HERE 
 //const contains (arr, name, cb)
+const contains (arr, name, cb) => {
+  if(arr.includes(name) === true){
+    cb(true)  //console.log(true)
+  } else if (arr.includes(name) === false){
+    cb(false) //console.log(false)
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 
 
@@ -108,6 +124,11 @@ const last = (arr, cb) => cb(arr[0])
 */
 
 // CODE HERE
+const uniq = (arr, name, cb) => cb(arr.includes(name))
+
+//Deprecation, in its programming sense, is the process of taking older code and marking it as no longer being useful within the codebase, usually because it has been superseded by newer code. The deprecated code is not immediately removed from the codebase because doing so may cause regression errors.
+cb(name)
+
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -117,6 +138,7 @@ const last = (arr, cb) => cb(arr[0])
 */
 
 // CODE HERE
+uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items removed is [UNIQARRPARAM].'
 
 
 
@@ -148,26 +170,26 @@ const last = (arr, cb) => cb(arr[0])
 */
 
 // Do not edit the code below.
-var users = [
-  {
-    id: '12d',
-    email: 'tyler@gmail.com',
-    name: 'Tyler',
-    address: '167 East 500 North'
-  },
-  {
-    id: '15a',
-    email: 'cahlan@gmail.com',
-    name: 'Cahlan',
-    address: '135 East 320 North'
-  },
-  {
-    id: '16t',
-    email: 'ryan@gmail.com',
-    name: 'Ryan',
-    address: '192 East 32 North'
-  },
-]
+// var users = [
+//   {
+//     id: '12d',
+//     email: 'tyler@gmail.com',
+//     name: 'Tyler',
+//     address: '167 East 500 North'
+//   },
+//   {
+//     id: '15a',
+//     email: 'cahlan@gmail.com',
+//     name: 'Cahlan',
+//     address: '135 East 320 North'
+//   },
+//   {
+//     id: '16t',
+//     email: 'ryan@gmail.com',
+//     name: 'Ryan',
+//     address: '192 East 32 North'
+//   },
+// ]
 // Do not edit the code above.
 
 // CODE HERE 
@@ -236,4 +258,4 @@ var users = [
   to add any number to your favorite number!
 */
 
-// CODE HERE
+// ('CODE HERE')
