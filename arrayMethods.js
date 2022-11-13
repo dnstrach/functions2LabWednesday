@@ -18,8 +18,6 @@ const mixedNumbers = [6,3,1,7,5,2,6,8,9,4,2,7,9,3,1,8,4,3];
   (element, index, wholeArray)=>{}    Arrow Form
 */
 
-//filter method - filtering out even numbers
-
 // CODE HERE
 // const evenNumbers // = mixedNumbers.filter(/* Provide Your Callback Here */)
 
@@ -117,19 +115,22 @@ const populations = [8175133, 3792621, 2695598, 2100263];
 
 /*
   Now we're going to ramp these up a little bit.
-  Instead of just arrays of numbers, we are going to have an array of objects that we want to use map, filter, and reduce with.
+  Instead of just arrays of numbers, we are going to have an array of objects 
+  that we want to use map, filter, and reduce with.
   Use the filter method to return only the monsters that have a CP of over 200.
 */
 
 // CODE HERE
 // const myStrongest // = monstersInYourPocket.filter(/* Provide Your Callback Here */)
 
-// const myStrongest = monstersInYourPocket.filter(function(elem){
-//   return elem.CP > 200
-// })
+const myStrongest = monstersInYourPocket.filter(monster => monster.cp > 200)
 
-const myStrongest = monstersInYourPocket.filter(monster => monster.CP > 200)
-console.log(monstersInYourPocket)
+const myStrongest2 = (monstersInYourPocket) => {
+  monstersInYourPocket.filter(function(elem) {
+    return elem.CP > 200
+    //return elem['CP'] > 200
+  })
+}
 
 ////////// PROBLEM 5 //////////
 
@@ -145,28 +146,29 @@ console.log(monstersInYourPocket)
 */
 
 // CODE HERE
-const orderTotals = orders.map(function(elem){
-  // return elem["price"] + ([elem["price"] * elem["tax"])]
-  return elem.price + (elem.price * elem.tax)
-})
-console.log(orderTotals)
+const ordertotal = (orders) => {
+  orders.map(function(elem){
+    return elem.price + (elem.price * elem.tax)
+  })
+}
 
 
 // arrowfunction
-//const orderTotals = orders.map(order => order.price + (order.price * order.tax))
+const orderTotal2 = (orders) => orders.map(order => order.price * (order.price * order.tax))
+
 
 
 
 ////////// PROBLEM 6 //////////
 
 // Do not edit the code below.
-// const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
-// {"owner":"Bob","price":73},{"owner":"Barry","price":57},{"owner":"Barry","price":128},
-// {"owner":"Bob","price":119},{"owner":"Barry","price":133},{"owner":"Barry","price":27},
-// {"owner":"Barry","price":138},{"owner":"Bob","price":68},{"owner":"Bob","price":50},
-// {"owner":"Barry","price":9},{"owner":"Bob","price":123},{"owner":"Bob","price":135},
-// {"owner":"Barry","price":30},{"owner":"Barry","price":129},{"owner":"Barry","price":38},
-// {"owner":"Bob","price":133},{"owner":"Barry","price":109},{"owner":"Bob","price":115}];
+const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
+{"owner":"Bob","price":73},{"owner":"Barry","price":57},{"owner":"Barry","price":128},
+{"owner":"Bob","price":119},{"owner":"Barry","price":133},{"owner":"Barry","price":27},
+{"owner":"Barry","price":138},{"owner":"Bob","price":68},{"owner":"Bob","price":50},
+{"owner":"Barry","price":9},{"owner":"Bob","price":123},{"owner":"Bob","price":135},
+{"owner":"Barry","price":30},{"owner":"Barry","price":129},{"owner":"Barry","price":38},
+{"owner":"Bob","price":133},{"owner":"Barry","price":109},{"owner":"Bob","price":115}];
 // // Do not edit the code above.
 
 /*
@@ -174,8 +176,13 @@ console.log(orderTotals)
 */
 
 // CODE HERE
-const bobsTotal = purchases
-    .filter(purchase => purchase.owner === "Bob")
-    .reduce((a, c) => a + c.price, 0)
 
-console.log(bobsTotal)
+// const bobsTotal = purchases =>
+//   .filter(purchase => purchase.owner === 'Bob')
+//   .reduce((a, c) => a + c.price)
+
+const bobsTotal = purchases.filter(function(elem){
+  return elem.owner === 'Bob'
+}).reduce(function(acc, elem){
+  return acc + elem.price
+},0)
