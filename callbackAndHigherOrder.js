@@ -1,24 +1,25 @@
 ////////// PROBLEM 1 //////////
 
 /*
-  Write a function called multiply that takes in three parameters: two numbers and a callback function.  
-  Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
+  Write a function called multiply that takes in three parameters: 
+  two numbers and a callback function.  
+  Invoke the callback, passing in the product of the two numbers 
+  multiplied as the argument. 
 */
 
 // CODE HERE
 
-const multiply = (num1, num2, cb) => cb(num1 * num2
+const multiply = (num1, num2, cb) => cb(num1 * num2)
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-(multiply(4, 3, answer => {
+multiply(4, 3, answer => {
    console.log('The answer is ' + answer) //should console.log 12
  })
 
- //syntax error missing ) after argument list: function is not complete
 
 
 ////////// PROBLEMS 2 - 6 //////////
@@ -63,8 +64,8 @@ const multiply = (num1, num2, cb) => cb(num1 * num2
 */
 
 // CODE HERE
-// const last = (arr, cb) => cb(arr[0])
-const last = (arr, cb) => cb(arr[0])
+// const last = (arr, cb) => cb(arr[i] - 1)
+const last = (arr, cb) => cb(arr.length - 1)
 
 
 
@@ -87,18 +88,19 @@ const last = (arr, cb) => cb(arr[0])
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//NOTE
-// not written the same as solution
 
 // CODE HERE 
 //const contains (arr, name, cb)
-const contains (arr, name, cb) => {
+const contains = (arr, name, cb) => {
   if(arr.includes(name) === true){
-    cb(true)  //console.log(true)
+    cb(true)  
   } else if (arr.includes(name) === false){
-    cb(false) //console.log(false)
+    cb(false) 
   }
 }
+
+//const contains = (arr, name, cb) => cb(arr.includes(name))
+//because includes prints T or F
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -124,10 +126,15 @@ contains(names, 'Colt', result => {
 */
 
 // CODE HERE
-const uniq = (arr, name, cb) => cb(arr.includes(name))
-
-//Deprecation, in its programming sense, is the process of taking older code and marking it as no longer being useful within the codebase, usually because it has been superseded by newer code. The deprecated code is not immediately removed from the codebase because doing so may cause regression errors.
-cb(name)
+const uniq = (arr, cb) => {
+  for(let i = 0; i < arr.length; i++)
+    for (let j = 0; j < arr.length; i++){
+      if(arr[i] === arr[j]){
+        arr.splice(i, 1)
+    }
+  }
+  cb(arr)
+}
 
 
 /*
@@ -138,7 +145,7 @@ cb(name)
 */
 
 // CODE HERE
-uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items removed is [UNIQARRPARAM].'
+uniq(names, uniqArr => console.log(`The new names array with all the duplicate items removed is ${uniqArr}`))
 
 
 
@@ -150,7 +157,13 @@ uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items
 */
 
 // CODE HERE 
+function each (arr, cb){
+  arr.forEach(el, i => {
+   cb(el, i) 
+  });
+}
 
+const each = (arr, cb) => arr.forEach((el, i) => cb(el, i))
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -160,13 +173,19 @@ uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items
 */
 
 // CODE HERE
+each(names, cb(item, index => {
+  `The item at index ${index} is ${item}`
+}))
 
 
 ////////// PROBLEM 7 //////////
 
 /*
-  Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
-  When the correct user object is found, invoke the callback with the user object as an argument.
+  Write a function called getUserById that takes in three parameters: 
+  an array of objects (users), an id and a callback, and searches for 
+  the user with a matching id.
+  When the correct user object is found, invoke the callback with 
+  the user object as an argument.
 */
 
 // Do not edit the code below.
@@ -193,7 +212,16 @@ uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items
 // Do not edit the code above.
 
 // CODE HERE 
+const getUserById = (arr, id, cb) => {
+  for (let i = 0; i < users.length; i++){
+    if(arr[i].id === id){
+      return cb(arr[i])
+    }
+  }
+}
 
+// one line with ternary
+//const getUserById = (arr, id, cb) => arr.forEach(elem => elem.id === id ? cb(elem) : null)
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -220,6 +248,14 @@ uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items
 */
 
 // CODE HERE
+const addingFactory = (num1) => (num2) => num1 + num2
+
+const addingFactory2 = (num1) => {
+  return function(num2){
+    return num1 + num2
+  }
+}
+
 
 /*
   Now that you have addingFactory, you can create other
@@ -234,6 +270,7 @@ uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items
 */
 
 // CODE HERE
+let addTen = addingFactory(10)
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -247,6 +284,9 @@ uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items
 
 // CODE HERE
 
+console.log(addTen(5))
+console.log(addTen(2))
+
 /*
   Let's make another function from the addingFactory. 
 
@@ -259,3 +299,5 @@ uniq(names, cb) = (uniqArr) => 'The new names array with all the duplicate items
 */
 
 // ('CODE HERE')
+let addNumber = addingFactory(24)
+console.log(addNumber(5))
